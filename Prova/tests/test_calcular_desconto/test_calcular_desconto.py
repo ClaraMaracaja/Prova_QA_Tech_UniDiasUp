@@ -1,6 +1,5 @@
 import pytest
-from calcular_desconto import calcular_desconto  # ajuste o import ao seu projeto
-
+from src.tech.ClaraMaracaja.UniDiasUp.calcular_desconto import calcular_desconto
 
 @pytest.mark.parametrize("valor, tipo, esperado", [
     (50, "COMUM", 0),
