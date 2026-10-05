@@ -1,0 +1,33 @@
+DESCONTO BASE (cliente COMUM)
+1. Compra de R$ 50,00 -> desconto R$ 0,00
+2. Compra de R$ 99,99 (limite inferior) -> desconto R$ 0,00
+3. Compra de R$ 100,00 (limite exato) -> desconto R$ 10,00
+4. Compra de R$ 300,00 -> desconto R$ 30,00
+5. Compra de R$ 499,99 (limite superior da faixa) -> desconto R$ 50,00
+6. Compra de R$ 500,00 (limite exato) -> desconto R$ 100,00
+
+CLIENTE VIP
+7. Compra de R$ 50,00 -> desconto R$ 2,50 (0% vira 5%)
+8. Compra de R$ 100,00 -> desconto R$ 15,00 (10% vira 15%)
+9. Compra de R$ 300,00 -> desconto R$ 45,00
+10. Compra de R$ 500,00 -> desconto R$ 125,00 (20% vira 25%)
+11. Tipo escrito como "vip", "Vip", "vIP" ou " vip " -> mesmo resultado de "VIP"
+12. Tipo escrito como "comum" -> mesmo resultado de "COMUM"
+
+TETO DE R$ 200,00
+13. COMUM, compra de R$ 1.000,00 -> desconto R$ 200,00 (exatamente no teto)
+14. COMUM, compra de R$ 1.500,00 -> desconto R$ 200,00 (seria R$ 300,00)
+15. VIP, compra de R$ 800,00 -> desconto R$ 200,00 (exatamente no teto)
+16. VIP, compra de R$ 1.000,00 -> desconto R$ 200,00 (seria R$ 250,00)
+
+DADOS INESPERADOS (não descritos na regra)
+17. Compra de R$ 0,00 -> desconto R$ 0,00
+18. Valor negativo (-100) -> lança ValueError
+19. Valor não numérico ("abc" ou None) -> lança ValueError
+20. Tipo de cliente inexistente ("GOLD" ou vazio) -> lança ValueError
+21. Tipo de cliente None -> lança ValueError
+
+BUGS ENCONTRADOS NO CÓDIGO ORIGINAL
+- Compra de exatamente R$ 100,00 não recebia desconto (usava > em vez de >=)
+- "vip" em minúsculo não era reconhecido como VIP
+- Entradas inválidas (valor negativo, não numérico, tipo inexistente) não eram tratadas
